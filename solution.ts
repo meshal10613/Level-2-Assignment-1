@@ -1,7 +1,7 @@
 //? Problem- 1
 const formatValue = (
     value: number | string | boolean
-): number | string | boolean  => {
+): number | string | boolean => {
     if (typeof value === "string") {
         return value.toUpperCase();
     } else if (typeof value === "number") {
@@ -96,8 +96,12 @@ interface Book {
 }
 
 const printBookDetails = (input: Book): string => {
-	const output = `Title: ${input.title}, Author: ${input.author}, Published: ${input.publishedYear}, Available: ${input.isAvailable ? "Yes" : "No"}`;
-	return output;
+    const output = `Title: ${input.title}, Author: ${
+        input.author
+    }, Published: ${input.publishedYear}, Available: ${
+        input.isAvailable ? "Yes" : "No"
+    }`;
+    return output;
 };
 
 // const myBook: Book = {
@@ -108,3 +112,83 @@ const printBookDetails = (input: Book): string => {
 // };
 
 // console.log(printBookDetails(myBook));
+
+//? Problem- 7
+type UniqueArr = (string | number)[];
+
+const getUniqueValues = (
+    a: UniqueArr,
+    b: UniqueArr
+): UniqueArr => {
+    const result: UniqueArr = [];
+
+    for (let i = 0; i < a.length; i++) {
+        let exists = false;
+        for (let j = 0; j < result.length; j++) {
+            if (result[j] === a[i]) {
+                exists = true;
+                break;
+            }
+        }
+        if (!exists) {
+            result.push(a[i]);
+        }
+    }
+
+    // Add elements from second array
+    for (let i = 0; i < b.length; i++) {
+        let exists = false;
+        for (let j = 0; j < result.length; j++) {
+            if (result[j] === b[i]) {
+                exists = true;
+                break;
+            }
+        }
+        if (!exists) {
+            result.push(b[i]);
+        }
+    }
+
+    return result;
+};
+
+// const array1 = [1, 2, 3, 4, 5];
+// const array2 = [3, 4, 5, 6, 7];
+// console.log(getUniqueValues(array1, array2));
+
+//? Problem- 8
+type Product = {
+    name: string;
+    price: number;
+    quantity: number;
+    discount?: number;
+};
+
+const calculateTotalPrice = (products: Product[]): number => {
+    if (products.length === 0) return 0;
+
+    return products.reduce((total, item) => {
+        if (
+            item.discount !== undefined &&
+            (item.discount < 0 || item.discount > 100)
+        ) {
+            throw new Error("Discount must be between 0 and 100");
+        }
+
+        const basePrice = item.price * item.quantity;
+        const finalPrice =
+            item.discount !== undefined
+                ? basePrice - (basePrice * item.discount) / 100
+                : basePrice;
+
+        return total + finalPrice;
+    }, 0);
+};
+
+const products = [
+    { name: "Pen", price: 10, quantity: 2 },
+    { name: "Notebook", price: 25, quantity: 3, discount: 10 },
+    { name: "Bag", price: 50, quantity: 1, discount: 20 },
+];
+
+console.log(calculateTotalPrice(products)); // 145
