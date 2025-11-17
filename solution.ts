@@ -37,16 +37,16 @@ class Person {
         this.age = age;
     }
 
-    getDetails() {
+    getDetails(): string {
         return `Name: ${this.name}, Age: ${this.age}`;
     }
 }
 
-// const person1 = new Person('John Doe', 30);
-// console.log(person1.getDetails());
+const person1 = new Person('John Doe', 30);
+console.log(person1.getDetails());
 
-// const person2 = new Person('Alice', 25);
-// console.log(person2.getDetails());
+const person2 = new Person('Alice', 25);
+console.log(person2.getDetails());
 
 //? Problem- 4
 type Item = {
@@ -116,10 +116,7 @@ const printBookDetails = (input: Book): string => {
 //? Problem- 7
 type UniqueArr = (string | number)[];
 
-const getUniqueValues = (
-    a: UniqueArr,
-    b: UniqueArr
-): UniqueArr => {
+const getUniqueValues = (a: UniqueArr, b: UniqueArr): UniqueArr => {
     const result: UniqueArr = [];
 
     for (let i = 0; i < a.length; i++) {
@@ -185,10 +182,10 @@ const calculateTotalPrice = (products: Product[]): number => {
     }, 0);
 };
 
-const products = [
-    { name: "Pen", price: 10, quantity: 2 },
-    { name: "Notebook", price: 25, quantity: 3, discount: 10 },
-    { name: "Bag", price: 50, quantity: 1, discount: 20 },
-];
+// const products = [
+//     { name: "Pen", price: 10, quantity: 2 },
+//     { name: "Notebook", price: 25, quantity: 3, discount: 10 },
+//     { name: "Bag", price: 50, quantity: 1, discount: 20 },
+// ];
 
-console.log(calculateTotalPrice(products)); // 145
+// console.log(calculateTotalPrice(products));
