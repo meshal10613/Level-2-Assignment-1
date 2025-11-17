@@ -1,28 +1,31 @@
 //? Problem- 1
 const formatValue = (
     value: number | string | boolean
-): number | string | boolean | undefined => {
+): number | string | boolean  => {
     if (typeof value === "string") {
         return value.toUpperCase();
     } else if (typeof value === "number") {
         return value * 10;
-    } else if (typeof value === "boolean") {
-        return !value;
     } else {
-        return undefined;
+        return !value;
     }
 };
 
+// console.log(formatValue('hello'));
+// console.log(formatValue(5));
+// console.log(formatValue(true));
+
 //? Problem- 2
-const getLength = (input: string | any[]): number | undefined => {
+const getLength = (input: string | unknown[]): number => {
     if (typeof input === "string") {
         return input.length;
-    } else if (Array.isArray(input)) {
-        return input.length;
     } else {
-        return undefined;
+        return input.length;
     }
 };
+
+// console.log(getLength('typescript'));
+// console.log(getLength([10, 20, 30, 40]));
 
 //? Problem- 3
 class Person {
@@ -39,13 +42,19 @@ class Person {
     }
 }
 
+// const person1 = new Person('John Doe', 30);
+// console.log(person1.getDetails());
+
+// const person2 = new Person('Alice', 25);
+// console.log(person2.getDetails());
+
 //? Problem- 4
-type Filter = {
+type Item = {
     title: string;
     rating: number;
 }[];
 
-const filterByRating = (input: Filter) => {
+const filterByRating = (input: Item): Item => {
     const filterInput = input.filter((f) => f.rating >= 4);
     return filterInput;
 };
@@ -67,8 +76,7 @@ type ActiveUser = {
 }[];
 
 const filterActiveUsers = (input: ActiveUser) => {
-    const isActive = input.filter((f) => f.isActive === true);
-    return isActive;
+    return input.filter((f) => f.isActive === true);
 };
 
 // const users = [
@@ -87,15 +95,8 @@ interface Book {
     isAvailable: boolean;
 }
 
-type Input = {
-    title: string;
-    author: string;
-    publishedYear: number;
-    isAvailable: boolean;
-}
-
 const printBookDetails = (input: Book): string => {
-	const output = `Title: ${input.title}, Author: ${input.author}, Published: ${input.publishedYear}, Available: ${input.isAvailable}`;
+	const output = `Title: ${input.title}, Author: ${input.author}, Published: ${input.publishedYear}, Available: ${input.isAvailable ? "Yes" : "No"}`;
 	return output;
 };
 
