@@ -89,4 +89,46 @@ let current: Status = Status.Approved;
 
 5. Provide an example of using union and intersection types in TypeScript.
 
-###### Answer:
+###### Answer: Union এবং Intersection Types
+
+**⭐ Union Type (একাধিক টাইপ হতে পারে)**
+
+Union মানে হলো: একটা ভ্যালু একাধিক টাইপের মধ্যে যেকোনো একট হতে পারে।
+
+উদাহরণ:
+
+```ts
+function printValue(value: string | number) {
+    console.log("Value:", value);
+}
+
+printValue("Hello");
+printValue(100);
+```
+
+👉 এখানে value একবার string, আবার number—দুইটাই নেওয়া যাবে।
+
+**⭐ Intersection Type (টাইপগুলোকে একসাথে মার্জ করা)**
+
+Intersection মানে: একটা ভ্যালু একাধিক টাইপের সব প্রপার্টিই পাবে।
+মানে সবটাই একসাথে—“AND” রিলেশন।
+
+উদাহরণ:
+
+```ts
+type Person = {
+    name: string;
+};
+
+type Employee = {
+    employeeId: number;
+};
+
+type Staff = Person & Employee;
+
+const user: Staff = {
+    name: "Meshal",
+    employeeId: 101,
+};
+```
+👉 এখানে Staff টাইপে Person + Employee — দুইটার সব প্রপার্টিই থাকতে হবে।
