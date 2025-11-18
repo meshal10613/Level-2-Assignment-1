@@ -1,6 +1,6 @@
 # Level-2: Assignment-1 Problem Solving with TypeScript
 
-### 🎯 Interview Questions - Blog Task
+#### 🎯 Interview Questions - Blog Task
 1. What are some differences between interfaces and types in TypeScript?
 
 ###### Answer: TypeScript: Interface vs Type Alias
@@ -20,7 +20,21 @@ TypeScript-এ আমরা `interface` এবং `type` দুটোই ব্�
 
 2. What is the use of the keyof keyword in TypeScript? Provide an example.
 
-###### Answer:
+###### Answer: keyof হলো TypeScript-এর একটা বিশেষ keyword, যার কাজ হলো—
+একটা টাইপের ভেতরে যে প্রপার্টিগুলো আছে, সেগুলোর নামগুলোকে বের করে আনা।
+
+মানে, ধরো তোমার কাছে একটা object টাইপ আছে যেখানে কিছু প্রপার্টি আছে—keyof সেই প্রপার্টিগুলোর নামগুলোকেই একটা union টাইপ বানিয়ে দেয়।
+
+```ts
+type User = {
+  name: string;
+  age: number;
+  isActive: boolean;
+};
+
+type UserKeys = keyof User;
+// UserKeys হবে: "name" | "age" | "isActive"
+```
 
 
 3. Explain the difference between any, unknown, and never types in TypeScript.
